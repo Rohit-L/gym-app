@@ -20,7 +20,7 @@ var express = require('express'), // Creates an express instance
     io = require('socket.io').listen(server); // Creates a socket.io instance
 
 server.listen(process.env.PORT || 3000); // Listening port for server
-console.log("Listening");
+console.log("Listening at localhost:3000");
 
 /* Serve static content */
 app.use(express.static('public'));

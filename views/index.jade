@@ -6,16 +6,48 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='description', content='Gym App')
     meta(name='author', content='Rohit Lalchandani')
+    
+    meta(name="theme-color" content="#EE6E73")
+    
+    link(href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet")
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(href='/css/materialize.css', rel='stylesheet')
+    
+    script(src="//cdn.transifex.com/live.js")
 
-    title Gym App
+    title Gym Logger
 
   body
-    // Main container
-    .container-fluid
-      p Hello World!
-
-
+    
+    header
+      .container
+        a(href='#' data-activates='nav-mobile' class='button-collapse top-nav waves-effect waves-light circle hide-on-large-only')
+         i(class='mdi-navigation-menu')
+      ul#nav-mobile.side-nav.fixed
+        li.logo
+          a#logo-container.brand-logo(href='/') 
+            img(src="/images/gym.png" alt="Mountain View" style='width:200px;height:140px;')
+        li.bold
+          a.waves-effect.waves-teal(href='http://www.rohitlalchandani.com') Personal
+    
+    main
+      .section.no-pad-bot#index-banner
+        .container
+          h1.header.center-on-small-only Gym Logger
+          .row.center
+            h4.header.col.s12.light.center Welcome to the future of gym analytics and workout tracking!
+          .row.center
+            a#download-button.btn-large.waves-effect.waves-light Get Started
+          .row.center
+            a.red-text.text-lighten-4 0.8.0
+          
+          br
+          
+        .github-commit
+          .container
+            .commit Currently in Production
+            
     script(src='https://cdn.socket.io/socket.io-1.2.0.js')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js')
-    script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')
-    script(src='/js/bootstrap.js')
+    script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+    script(src="/js/materialize.min.js")
+    script(src='/js/init.js')
