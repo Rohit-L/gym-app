@@ -13,6 +13,24 @@ html(lang='en')
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     link(href='/css/materialize.css', rel='stylesheet')
     
+    // Custom Styles - Set Height of splashpage
+    style.
+      main {
+        height: 90vh;
+        background-color: #ee6e73;
+      }
+      footer.page-footer {
+      	height:10vh;
+      }
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+      main {
+        flex: 1 0 auto;
+      }
+    
     script(src="//cdn.transifex.com/live.js")
 
     title GymRec
@@ -21,7 +39,7 @@ html(lang='en')
     
     header
       .container
-        a(href='#' data-activates='nav-mobile' class='button-collapse top-nav waves-effect waves-light circle')
+        a(href='#' data-activates='nav-mobile' class='button-collapse top-nav waves-effect waves-light circle hide-on-large-only')
          i(class='mdi-navigation-menu') Menu
       ul#nav-mobile.side-nav
         li.logo
@@ -35,28 +53,25 @@ html(lang='en')
     main
       .section.no-pad-bot#index-banner
         .container
-          h1.header.center-on-small-only GymRec
+          h2.header.center-on-small-only GymRec
+          br
           br
           br
           br
           .row.center
             h5.header.col.s12.light.center Welcome to the future of gym analytics and workout tracking!
           .row.center
-            a#download-button.btn-large.waves-effect.waves-light Get Started
+            a#download-button.btn-large.waves-effect.waves-light(href='/dashboard') Get Started
           .row.center
             a.red-text.text-lighten-4 0.8.0
           .row.center
             a.white-text Currently in Production
                     
     footer.page-footer
-      .container
-        .row
-          .col.l6.s12
-            h6.white-text Coming Soon
       .footer-copyright
         .container Rohit Lalchandani | Berkeley EECS
             
-    script(src='https://cdn.socket.io/socket.io-1.2.0.js')
+    //script(src='https://cdn.socket.io/socket.io-1.2.0.js')
     script(src="https://code.jquery.com/jquery-2.1.4.min.js")
     script(src="/js/materialize.min.js")
     script(src='/js/init.js')

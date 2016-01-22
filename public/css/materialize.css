@@ -2025,11 +2025,11 @@ ul.staggered-list li {
 footer.page-footer {
 	/*margin-top:20px; */
 	padding-top:20px;
-	background-color:#ee6e73
+	background-color:#ee6e73;
 }
 footer.page-footer .footer-copyright {
 	overflow:hidden;
-	height:50px;
+	height:100%;
 	line-height:50px;
 	color:rgba(255,255,255,0.8);
 	background-color:rgba(51,51,51,0.08)
@@ -9153,14 +9153,3 @@ body.parallax-demo footer {
 	background-color:#eee;
 	outline:none
 }
-
-
-/* Additions */
-main {
-	height: 100vh;
-	background-color: #ee6e73;
-}
-
-/*header,main,footer {
-	padding-left:240px
-}*/

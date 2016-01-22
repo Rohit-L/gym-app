@@ -33,3 +33,7 @@ app.get('/', function(req, res) {
   //res.sendfile("chessboard.html");
   res.render('index');
 });
+
+app.get('/dashboard', function(req, res) {
+  res.render('dashboard');
+});
