@@ -1,0 +1,14 @@
+{
+  "name": "gym-app",
+  "version": "1.0.0",
+  "description": "Track Gym Statistics",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rohit Naresh Lalchandani",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
