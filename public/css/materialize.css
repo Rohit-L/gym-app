@@ -1627,7 +1627,7 @@ body {
 	margin:0
 }
 article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary {
-	display:block
+	display:block;
 }
 audio,canvas,progress,video {
 	display:inline-block;
@@ -2023,7 +2023,7 @@ ul.staggered-list li {
 	}
 }
 footer.page-footer {
-	margin-top:20px;
+	/*margin-top:20px; */
 	padding-top:20px;
 	background-color:#ee6e73
 }
@@ -8484,9 +8484,7 @@ nav ul li a:hover,nav ul li.active {
 	border:1px solid #eee;
 	padding:20px 20px
 }
-header,main,footer {
-	padding-left:240px
-}
+
 .parallax-demo header,.parallax-demo main,.parallax-demo footer {
 	padding-left:0
 }
@@ -8601,7 +8599,11 @@ a.button-collapse.top-nav.full {
 	margin:0 auto
 }
 #index-banner {
-	background-color:#ee6e73
+	background-color:#ee6e73;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+	background-size: cover;
 }
 #index-banner .container {
 	position:relative
@@ -9151,3 +9153,14 @@ body.parallax-demo footer {
 	background-color:#eee;
 	outline:none
 }
+
+
+/* Additions */
+main {
+	height: 100vh;
+	background-color: #ee6e73;
+}
+
+/*header,main,footer {
+	padding-left:240px
+}*/

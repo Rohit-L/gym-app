@@ -15,37 +15,46 @@ html(lang='en')
     
     script(src="//cdn.transifex.com/live.js")
 
-    title Gym Logger
+    title GymRec
 
-  body
+  body(bgcolor='#ee6e73')
     
     header
       .container
-        a(href='#' data-activates='nav-mobile' class='button-collapse top-nav waves-effect waves-light circle hide-on-large-only')
-         i(class='mdi-navigation-menu')
-      ul#nav-mobile.side-nav.fixed
+        a(href='#' data-activates='nav-mobile' class='button-collapse top-nav waves-effect waves-light circle')
+         i(class='mdi-navigation-menu') Menu
+      ul#nav-mobile.side-nav
         li.logo
           a#logo-container.brand-logo(href='/') 
             img(src="/images/gym.png" alt="Mountain View" style='width:200px;height:140px;')
+        br
+        
         li.bold
           a.waves-effect.waves-teal(href='http://www.rohitlalchandani.com') Personal
     
     main
       .section.no-pad-bot#index-banner
         .container
-          h1.header.center-on-small-only Gym Logger
+          h1.header.center-on-small-only GymRec
+          br
+          br
+          br
           .row.center
-            h4.header.col.s12.light.center Welcome to the future of gym analytics and workout tracking!
+            h5.header.col.s12.light.center Welcome to the future of gym analytics and workout tracking!
           .row.center
             a#download-button.btn-large.waves-effect.waves-light Get Started
           .row.center
             a.red-text.text-lighten-4 0.8.0
-          
-          br
-          
-        .github-commit
-          .container
-            .commit Currently in Production
+          .row.center
+            a.white-text Currently in Production
+                    
+    footer.page-footer
+      .container
+        .row
+          .col.l6.s12
+            h6.white-text Coming Soon
+      .footer-copyright
+        .container Rohit Lalchandani | Berkeley EECS
             
     script(src='https://cdn.socket.io/socket.io-1.2.0.js')
     script(src="https://code.jquery.com/jquery-2.1.4.min.js")
