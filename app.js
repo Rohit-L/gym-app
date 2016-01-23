@@ -59,6 +59,7 @@ app.get('/auth/facebook/callback',
        failureRedirect: '/login'
   }),
   function(req, res) {
+    console.log("SUCCESS LOGIN");
     res.redirect('/');
   });
 app.get('/logout', function(req, res){
