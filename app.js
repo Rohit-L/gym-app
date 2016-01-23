@@ -19,7 +19,9 @@ var express = require('express'),
  ** Authentication **
  ********************/
 passport.serializeUser(function(user, done) {
- done(null, user);
+  console.log("USER SERIALIZE");
+  console.log(user);
+  done(null, user);
 });
 passport.deserializeUser(function(obj, done) {
  done(null, obj);
