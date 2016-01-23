@@ -4,15 +4,16 @@
   "description": "Track Gym Statistics",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "Rohit Naresh Lalchandani",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.0.0",
     "pg": "4.x"
-  },
-  "scripts": {
-    "start": "node app.js"
   }
 }
