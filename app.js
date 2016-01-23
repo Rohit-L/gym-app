@@ -54,10 +54,7 @@ app.get('/account', ensureAuthenticated, function(req, res){
 // Passport Router
 app.get('/auth/facebook', passport.authenticate('facebook'));
 app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', {
-       successRedirect : '/',
-       failureRedirect: '/login'
-  }),
+  passport.authenticate('facebook'),
   function(req, res) {
     console.log("SUCCESS LOGIN");
     res.redirect('/');
