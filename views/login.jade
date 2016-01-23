@@ -1,2 +1,5 @@
-h2 Please login
-a(href='/auth/facebook') Login
+if !user
+  h2 Please login
+  a(href='/auth/facebook') Login
+else
+  p hello
