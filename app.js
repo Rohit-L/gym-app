@@ -27,7 +27,7 @@ console.log("Listening at localhost:3000");
 app.use(express.static('public'));
 
 /* Set Jade view engine */
-//app.set('view engine', 'jade');
+app.set('view engine', 'jade');
 
 // Routing for webpages
 app.get('/', function(req, res) {
