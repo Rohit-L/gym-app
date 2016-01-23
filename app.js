@@ -43,6 +43,8 @@ app.use(passport.session());
 
 //Router code
 app.get('/', function(req, res){
+  console.log("REQ.USER");
+  console.log(req.user);
   res.render('login', { user: req.user });
 });
 app.get('/account', ensureAuthenticated, function(req, res){
