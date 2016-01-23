@@ -42,7 +42,7 @@ app.get('/dashboard', function(req, res) {
 var pg = require('pg');
 
 app.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  pg.connect("postgres://lkyzjjcrwqiqyp:HQ3OR_ANP0Sh_VeZcRoaMmo1IV@ec2-54-204-35-248.compute-1.amazonaws.com:5432/ddetg0pqkur0q8", function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
