@@ -8,41 +8,41 @@ var express = require('express'), // Creates an express instance
     app = express(),
     server = require('http').createServer(app), // Creates a web server
     pg = require('pg'); // PostgreSQL
-    passport = require('passport');
-    config = require('./fb.js');
-    FacebookStrategy = require('passport-facebook').Strategy;
-    cookieParser = require('cookie-parser')
-    session = require('express-session')
-    bodyParser = require('body-parser')
+    //passport = require('passport');
+    //config = require('./fb.js');
+    //FacebookStrategy = require('passport-facebook').Strategy;
+    //cookieParser = require('cookie-parser')
+    //session = require('express-session')
+    //bodyParser = require('body-parser')
 
 /********************
  ** Authentication **
  ********************/
-passport.use(new FacebookStrategy({
-  clientID: config.appID,
-  clientSecret: config.appSecret,
-  callbackURL: config.callbackURL
-  },
-  function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function () {
-      return done(null, profile);
-    });
-  }
-));
+// passport.use(new FacebookStrategy({
+//   clientID: config.appID,
+//   clientSecret: config.appSecret,
+//   callbackURL: config.callbackURL
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//     process.nextTick(function () {
+//       return done(null, profile);
+//     });
+//   }
+// ));
 
 // serialize and deserialize
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-passport.deserializeUser(function(obj, done) {
-  done(null, obj);
-});
+// passport.serializeUser(function(user, done) {
+//   done(null, user);
+// });
+// passport.deserializeUser(function(obj, done) {
+//   done(null, obj);
+// });
 
-app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({ secret: 'keyboard cat', key: 'sid'}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(cookieParser());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(session({ secret: 'keyboard cat', key: 'sid'}));
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 /************************
  * Creates a web server *
@@ -61,38 +61,36 @@ app.set('view engine', 'jade');
 app.get('/', function(req, res){
   res.render('login');
 });
-app.get('/account', ensureAuthenticated, function(req, res){
-  res.render('account', { user: req.user });
-});
+// app.get('/account', ensureAuthenticated, function(req, res){
+//   res.render('account', { user: req.user });
+// });
 //Passport Router
-app.get('/auth/facebook', passport.authenticate('facebook'));
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook', {
-       successRedirect : '/dashboard',
-       failureRedirect: '/login'
-  }),
-  function(req, res) {
-    res.redirect('/');
-  });
-
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
-}
+// app.get('/auth/facebook', passport.authenticate('facebook'));
+// app.get('/auth/facebook/callback',
+//   passport.authenticate('facebook', {
+//        successRedirect : '/dashboard',
+//        failureRedirect: '/login'
+//   }),
+//   function(req, res) {
+//     res.redirect('/');
+//   });
+// app.get('/logout', function(req, res){
+//   req.logout();
+//   res.redirect('/');
+// });
+// function ensureAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) { return next(); }
+//   res.redirect('/login')
+// }
 
 // // Routing for webpages
 // app.get('/', function(req, res) {
 //   res.render('index');
 // });
 //
-app.get('/dashboard', function(req, res) {
-  console.log(req);
-  res.render('dashboard');
-});
+// app.get('/dashboard', function(req, res) {
+//   res.render('dashboard');
+// });
 //
 // // Database Setup
 // app.get('/db', function (request, response) {
