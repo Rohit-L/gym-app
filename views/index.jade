@@ -13,7 +13,7 @@ html(lang='en')
     link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
     link(href='/css/materialize.css', rel='stylesheet')
     
-    // Custom Styles - Set Height of splashpage
+    // Custom Styles - Set Height of Splashpage
     style.
       main {
         height: 90vh;
@@ -37,19 +37,6 @@ html(lang='en')
 
   body(bgcolor='#ee6e73')
     
-    header
-      .container
-        a(href='#' data-activates='nav-mobile' class='button-collapse top-nav waves-effect waves-light circle hide-on-large-only')
-         i(class='mdi-navigation-menu') Menu
-      ul#nav-mobile.side-nav
-        li.logo
-          a#logo-container.brand-logo(href='/') 
-            img(src="/images/gym.png" alt="Mountain View" style='width:200px;height:140px;')
-        br
-        
-        li.bold
-          a.waves-effect.waves-teal(href='http://www.rohitlalchandani.com') Personal
-    
     main
       .section.no-pad-bot#index-banner
         .container
@@ -59,7 +46,8 @@ html(lang='en')
           br
           br
           .row.center
-            h5.header.col.s12.light.center Welcome to the future of gym analytics and workout tracking!
+            h4.header.col.s12.light.center Welcome to the future of gym analytics.
+            h6.header.col.s12.light.center Have you ever wanted to visualize your progress?
           .row.center
             a#download-button.btn-large.waves-effect.waves-light(href='/dashboard') Get Started
           .row.center
@@ -71,7 +59,7 @@ html(lang='en')
       .footer-copyright
         .container Rohit Lalchandani | Berkeley EECS
             
-    //script(src='https://cdn.socket.io/socket.io-1.2.0.js')
     script(src="https://code.jquery.com/jquery-2.1.4.min.js")
     script(src="/js/materialize.min.js")
     script(src='/js/init.js')
+    script(src='/js/logic.js')

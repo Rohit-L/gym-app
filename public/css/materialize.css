@@ -9153,3 +9153,20 @@ body.parallax-demo footer {
 	background-color:#eee;
 	outline:none
 }
+
+/* Additions */
+.brand-logo:hover {
+	background-color: #FFFFFF
+}
+
+ul .collapsible-accordion {
+	padding-top: 30px;
+}
+
+.no-outline {
+	outline: 0px solid transparent;
+}
+
+#no-outline {
+	outline: 0px solid transparent;
+}
