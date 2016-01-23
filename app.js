@@ -74,6 +74,7 @@ app.get('/auth/facebook/callback',
   function(req, res) {
     res.redirect('/');
   });
+
 app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
@@ -88,9 +89,10 @@ function ensureAuthenticated(req, res, next) {
 //   res.render('index');
 // });
 //
-// app.get('/dashboard', function(req, res) {
-//   res.render('dashboard');
-// });
+app.get('/dashboard', function(req, res) {
+  console.log(req);
+  res.render('dashboard');
+});
 //
 // // Database Setup
 // app.get('/db', function (request, response) {
