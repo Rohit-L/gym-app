@@ -9,7 +9,6 @@ var express = require('express'),
     server = require('http').createServer(app), // Creates a web server
     pg = require('pg'), // PostgreSQL
     passport = require('passport'),
-    config = require('./fb.js'),
     FacebookStrategy = require('passport-facebook').Strategy,
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
@@ -18,57 +17,14 @@ var express = require('express'),
 /********************
  ** Authentication **
  ********************/
-passport.serializeUser(function(user, done) {
-  console.log("USER SERIALIZE");
-  console.log(user);
-  done(null, user);
-});
-passport.deserializeUser(function(obj, done) {
- done(null, obj);
-});
-passport.use(new FacebookStrategy({
-  clientID: config.appID,
-  clientSecret: config.appSecret,
-  callbackURL: config.callbackURL
-  },
-  function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function () {
-      return done(null, profile);
-    });
-  }
-));
+require('./config/passport-config')(passport);
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser());
 app.use(session({ secret: 'keyboard cat', key: 'sid'}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Router code
-app.get('/', function(req, res){
-  console.log("REQ.USER");
-  console.log(req.user);
-  res.render('login', { user: req.user });
-});
-app.get('/account', ensureAuthenticated, function(req, res){
-  res.render('account', { user: req.user });
-});
-
-// Passport Router
-app.get('/auth/facebook', passport.authenticate('facebook'));
-app.get('/auth/facebook/callback',
-  passport.authenticate('facebook'),
-  function(req, res) {
-    console.log("SUCCESS LOGIN");
-    res.redirect('/');
-  });
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login')
-}
+require('./config/routes.js')(app, passport);
 
 /************************
  * Creates a web server *
