@@ -17,6 +17,7 @@ module.exports = function(app, passport, pg) {
 
   // Main Dashboard
   app.get('/dashboard', isLoggedIn, function(req, res) {
+    addUserToDB(pg, req.user);
     res.render('dashboard');
   });
 
@@ -52,6 +53,18 @@ module.exports = function(app, passport, pg) {
     res.redirect('/'); // Redirect to root directory
   });
 
+};
+
+function addUserToDB(pg, user) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query("INSERT INTO users VALUES('" + user.displayName + "', '" + user.id + "');", function(err, result) {
+      done();
+      if (err)
+       { console.error(err); }
+      else
+       { console.log(result); }
+    });
+  });
 };
 
 // Middleware -- Confirms Authenticated
