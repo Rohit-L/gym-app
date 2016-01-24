@@ -21,6 +21,16 @@ module.exports = function(app, passport, pg) {
     res.render('dashboard');
   });
 
+  app.get('/info', function(req, res) {
+    info = {
+      benchpress: [
+        { date: '2016-01-23', log: [{ weight: '120', reps: '8' }, { weight: '25', reps: '2' }]},
+        { date: '2016-01-24', log: [{ weight: '420', reps: '9' }, { weight: '425', reps: '1' }]}
+      ]
+    };
+    res.json(info);
+  })
+
   // Database Setup
   app.get('/db', function (request, response) {
     console.log(process.env.DATABASE_URL)
