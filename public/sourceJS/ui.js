@@ -46,10 +46,13 @@ var TableBody = React.createClass({
   }
 })
 
+
 // Creates a Workout Log Card
+// Parameters: workoutName (String -- Name of workout)
+//             exerciseData (Object: String -> Array)
 var LogCard = React.createClass({
   render: function() {
-    var data = this.props.data;
+    var data = this.props.exerciseData;
     return (
       <div className="row">
         <div className="col s12 m6">
@@ -57,13 +60,13 @@ var LogCard = React.createClass({
             <div className="card-content white-text">
               <span className="card-title">{this.props.workoutName} Log</span>
               <table>
-                <TableHeader headers={data.headers} />
-                <TableBody logs={data.logs} />
+                <TableHeader headers={data["headers"]} />
+                <TableBody logs={data["logs"]} />
               </table>
             </div>
             <div className="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is a link</a>
+              <a href="javascript:void(0);">This is a link</a>
+              <a href="javascript:void(0);">This is a link</a>
             </div>
           </div>
         </div>
@@ -129,22 +132,10 @@ var SideBar = React.createClass({
         </li>
         <ul className='collapsible collapsible-accordion'>
           <li className='bold'>
-            <a className='collapsible-header waves-effect waves-teal'>
-              Exercises
-            </a>
-            <div className='collapsible-body'>
-              <ul>
-                <li>
-                  <a>Benchpress</a>
-                </li>
-                <li>
-                  <a>Deadlift</a>
-                </li>
-                <li>
-                  <a>Squat</a>
-                </li>
-              </ul>
-            </div>
+            <a className='collapsible-header waves-effect waves-red'>Logs</a>
+          </li>
+          <li className='bold'>
+            <a className='collapsible-header waves-effect waves-red'>Settings</a>
           </li>
         </ul>
       </ul>
@@ -157,11 +148,17 @@ var SideBar = React.createClass({
  **********************/
  var App = React.createClass({
    render: function () {
+     var data = this.props.data;
+     var LogCards = []
+     for (var exercise in data.exercises) {
+       exerciseData = data.exercises[exercise];
+       LogCards.push(<LogCard workoutName={exercise.upCaseFirstLetter()} exerciseData={exerciseData} key={exercise} />);
+     }
      return (
        <div>
         <Header />
         <main>
-          <LogCard workoutName={"Benchpress"} data={data} />
+          {LogCards}
         </main>
        </div>
      );
@@ -171,5 +168,19 @@ var SideBar = React.createClass({
 /***************
  ** Rendering **
  ***************/
-data = {headers: ['Date', 'Weight', 'Reps'], logs: [['October 30', 20, 30], ['November 2', 30, 40]]};
-ReactDOM.render(<App />, document.getElementById('content'));
+data = {
+  exercises: {
+    "benchpress": {
+      "headers": ['Date', 'Weight', 'Reps'],
+      "logs": [['October 30', 20, 30], ['November 2', 30, 40]]
+    },
+    "squat": {
+      "headers": ['Date', 'Weight', 'Reps'],
+      "logs": [['October 30', 20, 30], ['November 2', 30, 40]]
+    },
+  }
+};
+for (var key in data.exercises) {
+  console.log(key);
+}
+ReactDOM.render(<App data={data}/>, document.getElementById('content'));

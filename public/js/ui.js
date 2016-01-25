@@ -63,11 +63,13 @@ var TableBody = React.createClass({
 });
 
 // Creates a Workout Log Card
+// Parameters: workoutName (String -- Name of workout)
+//             exerciseData (Object: String -> Array)
 var LogCard = React.createClass({
   displayName: "LogCard",
 
   render: function () {
-    var data = this.props.data;
+    var data = this.props.exerciseData;
     return React.createElement(
       "div",
       { className: "row" },
@@ -89,8 +91,8 @@ var LogCard = React.createClass({
             React.createElement(
               "table",
               null,
-              React.createElement(TableHeader, { headers: data.headers }),
-              React.createElement(TableBody, { logs: data.logs })
+              React.createElement(TableHeader, { headers: data["headers"] }),
+              React.createElement(TableBody, { logs: data["logs"] })
             )
           ),
           React.createElement(
@@ -98,12 +100,12 @@ var LogCard = React.createClass({
             { className: "card-action" },
             React.createElement(
               "a",
-              { href: "#" },
+              { href: "javascript:void(0);" },
               "This is a link"
             ),
             React.createElement(
               "a",
-              { href: "#" },
+              { href: "javascript:void(0);" },
               "This is a link"
             )
           )
@@ -219,43 +221,17 @@ var SideBar = React.createClass({
           { className: "bold" },
           React.createElement(
             "a",
-            { className: "collapsible-header waves-effect waves-teal" },
-            "Exercises"
-          ),
+            { className: "collapsible-header waves-effect waves-red" },
+            "Logs"
+          )
+        ),
+        React.createElement(
+          "li",
+          { className: "bold" },
           React.createElement(
-            "div",
-            { className: "collapsible-body" },
-            React.createElement(
-              "ul",
-              null,
-              React.createElement(
-                "li",
-                null,
-                React.createElement(
-                  "a",
-                  null,
-                  "Benchpress"
-                )
-              ),
-              React.createElement(
-                "li",
-                null,
-                React.createElement(
-                  "a",
-                  null,
-                  "Deadlift"
-                )
-              ),
-              React.createElement(
-                "li",
-                null,
-                React.createElement(
-                  "a",
-                  null,
-                  "Squat"
-                )
-              )
-            )
+            "a",
+            { className: "collapsible-header waves-effect waves-red" },
+            "Settings"
           )
         )
       )
@@ -270,6 +246,12 @@ var App = React.createClass({
   displayName: "App",
 
   render: function () {
+    var data = this.props.data;
+    var LogCards = [];
+    for (var exercise in data.exercises) {
+      exerciseData = data.exercises[exercise];
+      LogCards.push(React.createElement(LogCard, { workoutName: exercise.upCaseFirstLetter(), exerciseData: exerciseData, key: exercise }));
+    }
     return React.createElement(
       "div",
       null,
@@ -277,7 +259,7 @@ var App = React.createClass({
       React.createElement(
         "main",
         null,
-        React.createElement(LogCard, { workoutName: "Benchpress", data: data })
+        LogCards
       )
     );
   }
@@ -286,5 +268,19 @@ var App = React.createClass({
 /***************
  ** Rendering **
  ***************/
-data = { headers: ['Date', 'Weight', 'Reps'], logs: [['October 30', 20, 30], ['November 2', 30, 40]] };
-ReactDOM.render(React.createElement(App, null), document.getElementById('content'));
+data = {
+  exercises: {
+    "benchpress": {
+      "headers": ['Date', 'Weight', 'Reps'],
+      "logs": [['October 30', 20, 30], ['November 2', 30, 40]]
+    },
+    "squat": {
+      "headers": ['Date', 'Weight', 'Reps'],
+      "logs": [['October 30', 20, 30], ['November 2', 30, 40]]
+    }
+  }
+};
+for (var key in data.exercises) {
+  console.log(key);
+}
+ReactDOM.render(React.createElement(App, { data: data }), document.getElementById('content'));
