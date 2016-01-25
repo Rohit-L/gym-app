@@ -96,8 +96,15 @@ var NavBar = React.createClass({
     return (
       <div>
         <div className='container'>
-          <div className='nav-wrapper'>
-            <a className='page-title'>Welcome</a>
+          <div className='nav-wrapper row>'>
+            <div className='row'>
+              <div className='col s12 m9'>
+                <a className='page-title'>Welcome</a>
+              </div>
+              <div className='col s12 m3 valign-wrapper'>
+                <a className="waves-effect waves-light btn blue valign" href='/logout'>Logout</a>
+              </div>
+            </div>
           </div>
         </div>
         <div className='container'>

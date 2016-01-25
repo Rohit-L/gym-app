@@ -148,11 +148,28 @@ var NavBar = React.createClass({
         { className: "container" },
         React.createElement(
           "div",
-          { className: "nav-wrapper" },
+          { className: "nav-wrapper row>" },
           React.createElement(
-            "a",
-            { className: "page-title" },
-            "Welcome"
+            "div",
+            { className: "row" },
+            React.createElement(
+              "div",
+              { className: "col s12 m9" },
+              React.createElement(
+                "a",
+                { className: "page-title" },
+                "Welcome"
+              )
+            ),
+            React.createElement(
+              "div",
+              { className: "col s12 m3 valign-wrapper" },
+              React.createElement(
+                "a",
+                { className: "waves-effect waves-light btn blue valign", href: "/logout" },
+                "Logout"
+              )
+            )
           )
         )
       ),
