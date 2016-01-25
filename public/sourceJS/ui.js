@@ -46,7 +46,6 @@ var TableBody = React.createClass({
   }
 })
 
-
 // Creates a Workout Log Card
 // Parameters: workoutName (String -- Name of workout)
 //             exerciseData (Object: String -> Array)
@@ -180,7 +179,5 @@ data = {
     },
   }
 };
-for (var key in data.exercises) {
-  console.log(key);
-}
+
 ReactDOM.render(<App data={data}/>, document.getElementById('content'));

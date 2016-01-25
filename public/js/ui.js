@@ -280,7 +280,5 @@ data = {
     }
   }
 };
-for (var key in data.exercises) {
-  console.log(key);
-}
+
 ReactDOM.render(React.createElement(App, { data: data }), document.getElementById('content'));
