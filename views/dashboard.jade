@@ -1,6 +1,7 @@
 doctype html
 html(lang='en')
   head
+    // Meta Information
     meta(charset='utf-8')   
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
@@ -8,93 +9,22 @@ html(lang='en')
     meta(name='author', content='Rohit Lalchandani')
     meta(name="theme-color" content="#EE6E73")
     
+    // Stylesheets
     link(href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet")
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
     link(href='/css/materialize.css', rel='stylesheet')
+    link(href='/css/fixed-sidebar.css' rel='stylesheet')
     
-    style.
-      header, main, footer {
-        padding-left: 240px;
-      }
-
-      @media only screen and (max-width : 992px) {
-        header, main, footer {
-          padding-left: 0;
-        }
-      }
-    
-    script(src="//cdn.transifex.com/live.js")
-
     title GymRec Dashboard
-
-    body
-      header
-        nav.top-nav
-          .container
-            .nav-wrapper
-              a.page-title Welcome
-          .container
-            a.button-collapse.top-nav.full.hide-on-large-only(href='#', data-activates='nav-mobile')
-              i.material-icons menu
-          ul#nav-mobile.side-nav.fixed
-            li.logo
-              a#logo-container.brand-logo
-                h4 GymRec
-                
-            ul.collapsible.collapsible-accordion
-              li.bold
-                a.collapsible-header.waves-effect.waves-teal Exercises
-                .collapsible-body
-                  ul 
-                    li
-                      a Bench Press
-                    li
-                      a DeadLift
-                    li
-                      a Squat
     
-      main
-        .row
-          .col.s6
-            .card.blue-grey
-              .card-content.white-text
-                span.card-title Benchpress Log
-                table
-                  thead
-                    tr.
-                      <th data-field="id">Date</th>
-                      <th data-field="name">Weight</th>
-                      <th data-field="price">Reps</th>
-
-                  tbody.no-outline(contenteditable='true').
-                    <tr>
-                      <td>January 1</td>
-                      <td>50 lbs</td>
-                      <td>6</td>
-                    </tr>
-                    <tr>
-                      <td>January 6</td>
-                      <td>60 lbs</td>
-                      <td>8</td>
-                    </tr>
-                    <tr>
-                      <td>January 12</td>
-                      <td>80 lbs</td>
-                      <td>11</td>
-                    </tr>
-                    <tr>
-                      <td>January 22</td>
-                      <td>100 lbs</td>
-                      <td>6</td>
-                    </tr>
-                    <tr>
-                      <td>January 25</td>
-                      <td>110 lbs</td>
-                      <td>7</td>
-                    </tr>
-                  
-
-    script(src="https://code.jquery.com/jquery-2.1.4.min.js")
-    script(src="/js/materialize.min.js")
-    script(src='/js/init.js')
-    script(src='/js/logic.js')
+    body
+      #content
+      
+      // Javascript Scripts
+      script(src="https://code.jquery.com/jquery-2.1.4.min.js")
+      script(src="/js/react.js")
+      script(src="/js/react-dom.js")
+      script(src="/js/materialize.min.js")
+      script(src='/js/init.js')
+      script(src='/js/logic.js')
+      script(src='/js/ui.js')      

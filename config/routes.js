@@ -12,7 +12,11 @@ module.exports = function(app, passport, pg) {
 
   // Root Directory
   app.get('/', function(req, res) {
+    if (req.isAuthenticated()) {
+      res.redirect('/dashboard');
+    } else {
       res.render('index');
+    }
   });
 
   // Main Dashboard
